@@ -1,3 +1,5 @@
+const {LinkedList} = require('./ll')
+
 function swap(array, i, j) {
     const tmp = array[i];
     array[i] = array[j];
@@ -139,11 +141,64 @@ function qSortP(array,start,end){
 
 
 function main2(){
-    qSort(list5);
-    console.log(list5);
+    // qSort(list5);
+    // console.log(list5);
     //const b = quickSort(list5);
     //console.log(b);
+  const list = new LinkedList()
+  list.insertLast(5)
+  list.insertLast(4)
+  list.insertLast(6)
+  list.insertLast(2)
+  list.insertLast(1)
+  console.log(mSort(list))
 
 }
 
 main2();  
+
+function mSort(ll, start=0, end=0) {
+  if (ll === null) {
+    return ll;
+  }
+
+ 
+  const middle = Math.floor(ll.counter()/2) //counter of middle
+  // let left = mSort(ll, start, middle); //gets left half
+  // let right = mSort(ll, middle +1, end);//gets right half
+
+  left = mSort(left);
+  right = mSort(right);
+  return mergeLL(left, right, ll);
+
+}
+
+function mergeLL(left, right, ll) {
+  let leftIndex = left.head;
+  let rightIndex = right.head;
+  let outputIndex = ll.head;
+  while (leftIndex < left.length && rightIndex < right.length) {
+      if (leftIndex.value < rightIndex.value) {
+          ll.insertAfter(leftIndex);
+      }
+      else {
+          ll.insertBefore(rightIndex);
+      }
+  }
+
+  while (leftIndex.next !== null) {
+      ll.insertAfter(outputIndex);
+
+      leftIndex = leftIndex.next
+  }
+
+  while (rightIndex.next !== null) {
+    ll.insertAfter(outputIndex);
+
+    rightIndex = rightIndex.next
+}
+  return ll;
+};
+
+//console.log(mSort(list5))
+
