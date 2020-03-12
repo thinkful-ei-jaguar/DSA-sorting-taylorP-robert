@@ -157,19 +157,27 @@ function main2(){
 
 main2();  
 
-function mSort(ll, start=0, end=0) {
+function mSort(ll, start=this.head, end) {
   if (ll === null) {
     return ll;
   }
+  let nodemiddle =ll.head;
+  const middle = Math.floor(ll.counter()/2)
+  for(let i=0;i<middle;i++){
+    let nodemiddle=nodemiddle.next;
+  }
+   //counter of middle
+if(nodemiddle.value>= start.value){
+    let left = mSort(ll, start, middle);
+}
+   //gets left half
+if(nodemiddle.value<= end.value){
+    let right = mSort(ll, middle +1, end);
+}//gets right half
 
- 
-  const middle = Math.floor(ll.counter()/2) //counter of middle
-  // let left = mSort(ll, start, middle); //gets left half
-  // let right = mSort(ll, middle +1, end);//gets right half
-
-  left = mSort(left);
-  right = mSort(right);
-  return mergeLL(left, right, ll);
+  //left = mSort(left);
+  //right = mSort(right);
+  return mergeLL(ll);
 
 }
 
@@ -202,3 +210,10 @@ function mergeLL(left, right, ll) {
 
 //console.log(mSort(list5))
 
+//##6 bucketsort    2                36
+//                [6,9,36,14,8,2,5,4]
+function bucketsort(arr,max,min){
+    
+    
+
+}
